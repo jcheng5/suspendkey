@@ -5,3 +5,6 @@ ipch
 *.opensdf
 Debug
 Release
+*.wixobj
+*.wixpdb
+setup/SuspendKey.msi

@@ -1,0 +1,9 @@
+SuspendKey.exe adds three system-wide shortcuts to Windows:
+
+* Windows+Z - Sleep
+* Windows+Alt+Z - Hibernate
+* Shift+Alt+Z - Turn monitor off
+
+I've only tested on Windows 7 x64, but it seems like it should work on any x86 or x64 version of Windows XP or newer.
+
+Built using [Visual C++ 2010 Express](http://www.microsoft.com/express/Downloads/#2010-Visual-CPP) and [WiX 3.0](http://wix.codeplex.com/).

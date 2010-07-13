@@ -1,0 +1,1 @@
+@candle SuspendKey.wxs && light SuspendKey.wixobj

@@ -1,0 +1,35 @@
+<?xml version='1.0'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+   <Product Id='D9710BF1-C535-4B8E-9A5B-67D1D00A804D' Name='SuspendKey' Language='1033'
+            Version='1.0.0.0' Manufacturer='Joe Cheng' UpgradeCode='131DA75D-DC0C-4180-A867-21A262F5FC85'>
+      <Package Description='SuspendKey'
+               Manufacturer='Joe Cheng' InstallerVersion='200' Compressed='yes' />
+
+      <Media Id='1' Cabinet='product.cab' EmbedCab='yes' />
+ 
+      <Directory Id='TARGETDIR' Name='SourceDir'>
+         <Directory Id='ProgramFilesFolder' Name='PFiles'>
+            <Directory Id='MyDir' Name='SuspendKey'>
+               <Component Id='MyComponent' Guid='F9C89249-1B8C-4D62-817F-EE7667EB2C1F'>
+                  <File Id='SuspendKeyExe' Name='SuspendKey.exe' DiskId='1' Source='..\Release\SuspendKey.exe' />
+				  <RegistryValue Action="write"
+								 Root="HKLM"
+								 Type="string"
+								 Key="Software\Microsoft\Windows\CurrentVersion\Run"
+								 Name="com.joecheng.SuspendKey"
+								 Value="&quot;[MyDir]SuspendKey.exe&quot;" />
+               </Component>
+            </Directory>
+         </Directory>
+      </Directory>
+ 
+      <CustomAction Id="LaunchApplication" FileKey="SuspendKeyExe" ExeCommand='' Return='asyncNoWait' />
+      <InstallExecuteSequence>
+         <Custom Action="LaunchApplication" After='InstallFinalize'>NOT Installed</Custom>
+      </InstallExecuteSequence>
+
+      <Feature Id='MyFeature' Title='SuspendKey' Level='1'>
+         <ComponentRef Id='MyComponent' />
+      </Feature>
+   </Product>
+</Wix>
